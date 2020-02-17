@@ -5,6 +5,7 @@ namespace Amethyst\Tests\Managers;
 use Amethyst\Fakers\DataSchemaFaker;
 use Amethyst\Managers\DataSchemaManager;
 use Amethyst\Managers\RelationSchemaManager;
+use Amethyst\Managers\RelationManager;
 use Amethyst\Tests\BaseTest;
 use Railken\Lem\Support\Testing\TestableBaseTrait;
 use Symfony\Component\Yaml\Yaml;
@@ -35,7 +36,14 @@ class RelationTest extends BaseTest
         $cat = app('amethyst')->findManagerByName('cat')->newEntity();
         $cat->save();
 
-        $dog->friends()->attach($cat);
+        // $dog->friends()->attach($cat);
+        app(RelationManager::class)->createOrFail([
+            'key'           => 'dog:friends',
+            'source_type'   => 'dog',
+            'source_id'     => $dog->id,
+            'target_type'    => 'cat',
+            'target_id'    => $cat->id,
+        ]);
 
         $this->assertEquals(1, $dog->id);
         $this->assertEquals(1, $dog->friends->count());

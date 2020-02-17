@@ -63,6 +63,8 @@ class Manager extends BaseManager
     {
         $model = new Model($parameters);
         $model->setTable(Helper::toTable($this->dataSchema->name));
+        $model->setManager($this);
+        $model->ini(null, true);
 
         return $model;
     }

@@ -3,8 +3,8 @@
 namespace Amethyst\Providers;
 
 use Amethyst\Core\Providers\CommonServiceProvider;
-use Amethyst\Observers\DataSchemaObserver;
 use Amethyst\Models\DataSchema;
+use Amethyst\Observers\DataSchemaObserver;
 
 class DataSchemaServiceProvider extends CommonServiceProvider
 {

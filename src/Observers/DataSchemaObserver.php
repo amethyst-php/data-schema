@@ -3,11 +3,9 @@
 namespace Amethyst\Observers;
 
 use Amethyst\Models\DataSchema;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Schema;
-use Railken\Lem\DataSchemas\BelongsToDataSchema;
 use Doctrine\Common\Inflector\Inflector;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class DataSchemaObserver
 {
@@ -17,7 +15,7 @@ class DataSchemaObserver
 
     public function __construct()
     {
-        $this->inflector = new Inflector;
+        $this->inflector = new Inflector();
     }
 
     /**
@@ -27,8 +25,7 @@ class DataSchemaObserver
      */
     public function created(DataSchema $dataSchema)
     {
-
-        Schema::create($this->toTable(static::PREFIX . $dataSchema->name), function (Blueprint $table) use ($dataSchema) {
+        Schema::create($this->toTable(static::PREFIX.$dataSchema->name), function (Blueprint $table) use ($dataSchema) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -46,7 +43,7 @@ class DataSchemaObserver
         $oldName = $dataSchema->getOriginal()['name'];
 
         if ($dataSchema->name !== $oldName) {
-            Schema::rename($this->toTable(static::PREFIX . $oldName), $this->toTable(static::PREFIX . $dataSchema->getSchemaTable()));
+            Schema::rename($this->toTable(static::PREFIX.$oldName), $this->toTable(static::PREFIX.$dataSchema->getSchemaTable()));
         }
 
         $this->reload($dataSchema);
@@ -59,7 +56,7 @@ class DataSchemaObserver
      */
     public function deleted(DataSchema $dataSchema)
     {
-        Schema::drop($this->toTable(static::PREFIX . $dataSchema->name));
+        Schema::drop($this->toTable(static::PREFIX.$dataSchema->name));
 
         $this->reload($dataSchema);
     }
@@ -73,6 +70,6 @@ class DataSchemaObserver
 
     public function toTable(string $name)
     {
-        return $this->inflector->tableize(str_replace("-", "_", $name));
+        return $this->inflector->tableize(str_replace('-', '_', $name));
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Amethyst\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Amethyst\Core\ConfigurableModel;
+use Illuminate\Database\Eloquent\Model;
 use Railken\Lem\Contracts\EntityContract;
 
 class DataSchema extends Model implements EntityContract

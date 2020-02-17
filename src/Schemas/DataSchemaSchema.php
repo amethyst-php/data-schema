@@ -3,8 +3,8 @@
 namespace Amethyst\Schemas;
 
 use Railken\Lem\Attributes;
-use Railken\Lem\Schema;
 use Railken\Lem\Contracts\EntityContract;
+use Railken\Lem\Schema;
 
 class DataSchemaSchema extends Schema
 {
@@ -25,7 +25,7 @@ class DataSchemaSchema extends Schema
                 }),
             Attributes\LongTextAttribute::make('description'),
             Attributes\CreatedAtAttribute::make(),
-            Attributes\UpdatedAtAttribute::make()
+            Attributes\UpdatedAtAttribute::make(),
         ];
     }
 }

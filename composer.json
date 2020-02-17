@@ -6,7 +6,8 @@
     "require": {
         "php": ">=7.2",
         "amethyst/core": "0.2.*",
-        "amethyst/attribute": "^0.2.0"
+        "amethyst/attribute": "^0.2.0",
+        "amethyst/relation-schema": "^0.2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "*",

@@ -16,7 +16,7 @@ class DataSchemaFaker extends Faker
         $faker = Factory::create();
 
         $bag = new Bag();
-        $bag->set('name', $faker->name);
+        $bag->set('name', strtolower('hoo-'.str_random(5)));
         $bag->set('description', $faker->text);
 
         return $bag;

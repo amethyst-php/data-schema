@@ -5,8 +5,6 @@ namespace Amethyst\Services;
 use Amethyst\Models;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
-use Railken\Lem\Manager;
-use Symfony\Component\Yaml\Yaml;
 
 class DataSchema
 {

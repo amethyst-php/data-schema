@@ -10,6 +10,6 @@ class Helper
 
     public static function toTable(string $name)
     {
-        return static::PREFIX . Inflector::tableize(str_replace('-', '_', $name));
+        return static::PREFIX.Inflector::tableize(str_replace('-', '_', $name));
     }
 }

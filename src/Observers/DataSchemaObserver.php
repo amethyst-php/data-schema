@@ -2,11 +2,11 @@
 
 namespace Amethyst\Observers;
 
+use Amethyst\DataSchema\Helper;
+use Amethyst\DataSchema\Manager;
 use Amethyst\Models\DataSchema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Amethyst\DataSchema\Manager;
-use Amethyst\DataSchema\Helper;
 
 class DataSchemaObserver
 {
@@ -48,7 +48,6 @@ class DataSchemaObserver
             app('amethyst')->removeData($oldName);
             app('amethyst')->addData($dataSchema->name, $manager);
         }
-
 
         $this->reload($dataSchema);
     }

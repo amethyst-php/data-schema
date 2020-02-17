@@ -28,7 +28,7 @@ class DataSchemaTest extends BaseTest
     public function testBasicDataCycle()
     {
         $data = (new DataSchemaManager())->createOrFail([
-            'name'   => 'my-new-data',
+            'name' => 'my-new-data',
         ])->getResource();
 
         $manager = app('amethyst')->findManagerByName($data->name);
@@ -57,7 +57,7 @@ class DataSchemaTest extends BaseTest
     public function testDataRenaming()
     {
         $data = (new DataSchemaManager())->createOrFail([
-            'name'   => 'my-new-data',
+            'name' => 'my-new-data',
         ])->getResource();
 
         $data->name = 'renaming-is-difficult';
@@ -67,7 +67,6 @@ class DataSchemaTest extends BaseTest
 
         $manager = app('amethyst')->findManagerByName('my-new-data');
     }
-
 
     // test rename manager
     // test delete manager

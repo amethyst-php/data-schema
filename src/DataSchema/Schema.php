@@ -3,7 +3,6 @@
 namespace Amethyst\DataSchema;
 
 use Railken\Lem\Attributes;
-use Railken\Lem\Contracts\EntityContract;
 use Railken\Lem\Schema as BaseSchema;
 
 class Schema extends BaseSchema

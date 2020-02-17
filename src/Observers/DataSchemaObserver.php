@@ -49,7 +49,6 @@ class DataSchemaObserver
             app('amethyst')->removeData($oldName);
             app('amethyst')->addData($dataSchema->name, $manager);
             app('amethyst')->bootData($manager);
-
         }
 
         $this->reload($dataSchema);

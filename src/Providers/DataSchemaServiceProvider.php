@@ -7,7 +7,19 @@ use Amethyst\Models\DataSchema;
 use Amethyst\Observers\DataSchemaObserver;
 
 class DataSchemaServiceProvider extends CommonServiceProvider
-{
+{   
+	/**
+     * @inherit
+     */
+    public function register()
+    {
+        parent::register();
+
+        $this->app->singleton('amethyst.data-schema', function ($app) {
+            return new \Amethyst\Services\DataSchema();
+        });
+    }
+
     /**
      * @inherit
      */

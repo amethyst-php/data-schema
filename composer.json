@@ -1,0 +1,35 @@
+{
+    "name": "amethyst/data-schema",
+    "type": "library",
+    "keywords": ["laravel", "amethyst", "data-schema"],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.2",
+        "amethyst/core": "0.2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "orchestra/testbench": "*"
+    },
+    "autoload": {
+        "psr-4" : {
+            "Amethyst\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { 
+            "Amethyst\\Tests\\": "tests/" 
+        }
+    },
+    "extra": {
+        "amethyst": {
+            "package": "data-schema",
+            "namespace": "Amethyst"
+        },
+        "laravel": {
+            "providers": [
+                "Amethyst\\Providers\\DataSchemaServiceProvider"
+            ]
+        }
+    }
+}

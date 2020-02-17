@@ -37,8 +37,9 @@ class DataSchemaTest extends BaseTest
         $resource = $manager->createOrFail([])->getResource();
         $this->assertEquals(true, !empty($resource->id));
 
-        $data->name = 'renaming-is-difficult';
-        $data->save();
+        $data = (new DataSchemaManager())->updateOrFail($data, [
+            'name' => 'renaming-is-difficult',
+        ])->getResource();
 
         $resource = $manager->createOrFail([])->getResource();
         $this->assertEquals(true, !empty($resource->id));
@@ -60,8 +61,13 @@ class DataSchemaTest extends BaseTest
             'name' => 'my-new-data',
         ])->getResource();
 
-        $data->name = 'renaming-is-difficult';
-        $data->save();
+        $data = (new DataSchemaManager())->updateOrFail($data, [
+            'name' => 'my-new-data',
+        ])->getResource();
+        
+        $data = (new DataSchemaManager())->updateOrFail($data, [
+            'name' => 'renaming-is-difficult',
+        ])->getResource();
 
         $this->expectException(\Amethyst\Core\Exceptions\DataNotFoundException::class);
 

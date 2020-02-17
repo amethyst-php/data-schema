@@ -2,11 +2,9 @@
 
 namespace Amethyst\Tests\Managers;
 
-use Amethyst\Fakers\DataSchemaFaker;
-use Amethyst\Managers\DataSchemaManager;
 use Amethyst\Managers\AttributeManager;
+use Amethyst\Managers\DataSchemaManager;
 use Amethyst\Tests\BaseTest;
-use Railken\Lem\Support\Testing\TestableBaseTrait;
 
 class AttributeTest extends BaseTest
 {
@@ -25,7 +23,7 @@ class AttributeTest extends BaseTest
         ])->getResource();
 
         $resource = $manager->createOrFail([
-            'name' => 'cat-1'
+            'name' => 'cat-1',
         ])->getResource();
 
         $this->assertEquals('cat-1', $resource->name);
@@ -37,8 +35,8 @@ class AttributeTest extends BaseTest
         ])->getResource();
 
         $resource = $manager->createOrFail([
-            'name' => 'cat-2-name',
-            'description' => 'cat-2-description'
+            'name'        => 'cat-2-name',
+            'description' => 'cat-2-description',
         ])->getResource();
 
         $results = $manager->getRepository()->findAll();

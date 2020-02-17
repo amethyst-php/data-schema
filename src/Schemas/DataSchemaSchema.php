@@ -5,6 +5,8 @@ namespace Amethyst\Schemas;
 use Railken\Lem\Attributes;
 use Railken\Lem\Contracts\EntityContract;
 use Railken\Lem\Schema;
+use Illuminate\Support\Facades\Schema as DBSchema;
+use Amethyst\DataSchema\Helper;
 
 class DataSchemaSchema extends Schema
 {
@@ -21,6 +23,13 @@ class DataSchemaSchema extends Schema
                 ->setRequired(true)
                 ->setUnique(true)
                 ->setValidator(function (EntityContract $entity, $value) {
+
+                    if ($entity->value !== $value) {
+                        if (DBSchema::hasTable(Helper::toTable($value))) {
+                            return false;
+                        }  
+                    }
+
                     return preg_match('/^([a-z0-9\-]*)$/', $value);
                 }),
             Attributes\LongTextAttribute::make('description'),

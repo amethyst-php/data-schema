@@ -68,6 +68,30 @@ class DataSchemaTest extends BaseTest
         $manager = app('amethyst')->findManagerByName('my-new-data');
     }
 
+    public function testUniqueAndInvalid()
+    {
+        $data = (new DataSchemaManager())->create([
+            'name'   => 'my-new-data',
+        ]);
+
+        $errors = (new DataSchemaManager())->create([
+            'name'   => 'my-new-data',
+        ])->getSimpleErrors();
+
+        $this->assertEquals(2, count($errors));
+        $this->assertEquals('DATA-SCHEMA_NAME_NOT_UNIQUE', $errors[0]['code']);
+        $this->assertEquals('DATA-SCHEMA_NAME_NOT_VALID', $errors[1]['code']);
+
+
+        $errors = (new DataSchemaManager())->create([
+            'name'   => 'amethyst_data_schemas',
+        ])->getSimpleErrors();
+
+        $this->assertEquals(1, count($errors));
+        $this->assertEquals('DATA-SCHEMA_NAME_NOT_VALID', $errors[0]['code']);
+    }
+
+
     // test rename manager
     // test delete manager
     // test with permissions?

@@ -64,7 +64,7 @@ class DataSchemaTest extends BaseTest
         $data = (new DataSchemaManager())->updateOrFail($data, [
             'name' => 'my-new-data',
         ])->getResource();
-        
+
         $data = (new DataSchemaManager())->updateOrFail($data, [
             'name' => 'renaming-is-difficult',
         ])->getResource();

@@ -23,7 +23,6 @@ class DataSchemaSchema extends Schema
                 ->setRequired(true)
                 ->setUnique(true)
                 ->setValidator(function (EntityContract $entity, $value) {
-
                     if ($entity->name !== $value) {
                         if (DBSchema::hasTable(Helper::toTable($value))) {
                             return false;

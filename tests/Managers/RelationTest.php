@@ -41,8 +41,8 @@ class RelationTest extends BaseTest
             'key'           => 'dog:friends',
             'source_type'   => 'dog',
             'source_id'     => $dog->id,
-            'target_type'    => 'cat',
-            'target_id'    => $cat->id,
+            'target_type'   => 'cat',
+            'target_id'     => $cat->id,
         ]);
 
         $this->assertEquals(1, $dog->id);

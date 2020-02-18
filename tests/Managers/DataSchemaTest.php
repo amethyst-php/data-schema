@@ -96,9 +96,31 @@ class DataSchemaTest extends BaseTest
         $this->assertEquals('DATA-SCHEMA_NAME_NOT_VALID', $errors[0]['code']);
     }
 
-    // test rename manager
-    // test delete manager
-    // test with permissions?
-    // test with attributes?
-    // test with data-view
+    public function testMorphClass()
+    {
+        $data = (new DataSchemaManager())->createOrFail([
+            'name' => 'cat',
+        ])->getResource();
+
+        $managerCat = app('amethyst')->findManagerByName($data->name);
+
+        $data = (new DataSchemaManager())->createOrFail([
+            'name' => 'dog',
+        ])->getResource();
+
+        $managerDog = app('amethyst')->findManagerByName($data->name);
+
+        $resource = $managerCat->createOrFail([])->getResource();
+        $this->assertEquals(true, !empty($resource->id));
+
+        $resource = $managerDog->createOrFail([])->getResource();
+        $this->assertEquals(true, !empty($resource->id));
+
+        $this->assertEquals(1, $managerCat->getRepository()->findAll()->count());
+        $this->assertEquals(1, $managerDog->getRepository()->findAll()->count());
+
+        $this->assertEquals('cat', $managerCat->getRepository()->newQuery()->first()->getMorphClass());
+        $this->assertEquals('dog', $managerDog->getRepository()->newQuery()->first()->getMorphClass());
+
+    }
 }

@@ -2,16 +2,14 @@
 
 namespace Amethyst\Tests\Managers;
 
-use Amethyst\Fakers\DataSchemaFaker;
 use Amethyst\Managers\DataSchemaManager;
-use Amethyst\Managers\RelationSchemaManager;
 use Amethyst\Managers\RelationManager;
+use Amethyst\Managers\RelationSchemaManager;
 use Amethyst\Tests\BaseTest;
-use Railken\Lem\Support\Testing\TestableBaseTrait;
 use Symfony\Component\Yaml\Yaml;
 
 class RelationTest extends BaseTest
-{   
+{
     public function testBasicMorphToMany()
     {
         $data = app(DataSchemaManager::class)->createOrFail([
@@ -38,11 +36,11 @@ class RelationTest extends BaseTest
 
         // $dog->friends()->attach($cat);
         app(RelationManager::class)->createOrFail([
-            'key'           => 'dog:friends',
-            'source_type'   => 'dog',
-            'source_id'     => $dog->id,
-            'target_type'   => 'cat',
-            'target_id'     => $cat->id,
+            'key'         => 'dog:friends',
+            'source_type' => 'dog',
+            'source_id'   => $dog->id,
+            'target_type' => 'cat',
+            'target_id'   => $cat->id,
         ]);
 
         $this->assertEquals(1, $dog->id);

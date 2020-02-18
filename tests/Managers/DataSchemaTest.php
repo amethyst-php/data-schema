@@ -121,6 +121,5 @@ class DataSchemaTest extends BaseTest
 
         $this->assertEquals('cat', $managerCat->getRepository()->newQuery()->first()->getMorphClass());
         $this->assertEquals('dog', $managerDog->getRepository()->newQuery()->first()->getMorphClass());
-
     }
 }

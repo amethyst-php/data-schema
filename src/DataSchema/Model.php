@@ -6,8 +6,6 @@ use Amethyst\Core\ConfigurableModel;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Railken\Lem\Contracts\EntityContract;
 use Railken\Lem\Contracts\ManagerContract;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Str;
 
 class Model extends BaseModel implements EntityContract
 {
@@ -43,8 +41,9 @@ class Model extends BaseModel implements EntityContract
     /**
      * Create a new instance of the given model.
      *
-     * @param  array  $attributes
-     * @param  bool  $exists
+     * @param array $attributes
+     * @param bool  $exists
+     *
      * @return static
      */
     public function newInstance($attributes = [], $exists = false)

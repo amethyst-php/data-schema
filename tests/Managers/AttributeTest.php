@@ -52,4 +52,59 @@ class AttributeTest extends BaseTest
 
         $this->assertEquals(null, $results->get(1)->description);
     }
+
+    public function testAvoidAttributeCollision()
+    {
+
+        $dataCat = app(DataSchemaManager::class)->createOrFail([
+            'name' => 'cat',
+        ])->getResource();
+
+        $managerCat = app('amethyst')->findManagerByName($dataCat->name);
+
+        app(AttributeManager::class)->createOrFail([
+            'name'   => 'name',
+            'schema' => 'Text',
+            'model'  => 'cat',
+        ])->getResource();
+
+
+        $dataDog = app(DataSchemaManager::class)->createOrFail([
+            'name' => 'dog',
+        ])->getResource();
+
+        $managerDog = app('amethyst')->findManagerByName($dataDog->name);
+
+        app(AttributeManager::class)->createOrFail([
+            'name'   => 'label',
+            'schema' => 'Text',
+            'model'  => 'dog',
+        ])->getResource();
+
+        $resourceCat = $managerCat->createOrFail([
+            'name' => 'name-1',
+            'label' => 'label-1',
+        ])->getResource();
+
+        $resourceDog = $managerDog->createOrFail([
+            'name' => 'name-2',
+            'label' => 'label-2',
+        ])->getResource();
+
+        $this->assertEquals('name-1', $resourceCat->name);
+        $this->assertEquals(null, $resourceCat->label);
+
+        $this->assertEquals(null, $resourceDog->name);
+        $this->assertEquals('label-2', $resourceDog->label);
+
+        $results = $managerCat->getRepository()->findAll();
+
+        $this->assertEquals('name-1', $results->get(0)->name);
+        $this->assertEquals(null, $results->get(0)->label);
+
+        $results = $managerDog->getRepository()->findAll();
+
+        $this->assertEquals(null, $results->get(0)->name);
+        $this->assertEquals('label-2', $results->get(0)->label);
+    }
 }

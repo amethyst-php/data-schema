@@ -51,6 +51,37 @@ class RelationTest extends BaseTest
         $this->assertEquals(1, $dog->friends()->first()->id);
     }
 
+    public function testAvoidCollision()
+    {
+        $data = app(DataSchemaManager::class)->createOrFail([
+            'name' => 'dog',
+        ])->getResource();
+
+        $data = app(DataSchemaManager::class)->createOrFail([
+            'name' => 'cat',
+        ])->getResource();
+
+        $dog = app('amethyst')->findManagerByName('dog')->newEntity();
+        $cat = app('amethyst')->findManagerByName('cat')->newEntity();
+
+        $relation = app(RelationSchemaManager::class)->createOrFail([
+            'name'    => 'friends',
+            'type'    => 'MorphToMany',
+            'data'    => 'dog',
+            'payload' => Yaml::dump([
+                'target' => 'cat',
+            ]),
+        ]);
+
+
+        $dog->friends(); // correct
+
+        $this->expectException(\BadMethodCallException::class);
+        $cat->friends(); // incorrect
+
+    }
+
+
     public function getQuery($builder)
     {
         return vsprintf(str_replace(['?'], ['\'%s\''], $builder->toSql()), $builder->getBindings());

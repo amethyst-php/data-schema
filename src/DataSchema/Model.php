@@ -13,11 +13,6 @@ class Model extends BaseModel implements EntityContract
 
     protected $__manager;
 
-    public static function bootDynamicRelations()
-    {
-        static::$dynamicRelations = new RelationStore();
-    }
-    
     /**
      * Create a new Eloquent model instance.
      *
@@ -26,6 +21,11 @@ class Model extends BaseModel implements EntityContract
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
+    }
+
+    public static function bootDynamicRelations()
+    {
+        static::$dynamicRelations = new RelationStore();
     }
 
     public function retrieveManager()

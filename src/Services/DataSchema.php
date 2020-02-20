@@ -2,10 +2,10 @@
 
 namespace Amethyst\Services;
 
+use Amethyst\DataSchema\Manager;
 use Amethyst\Models;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
-use Amethyst\DataSchema\Manager;
 
 class DataSchema
 {

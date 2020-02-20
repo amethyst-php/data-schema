@@ -55,7 +55,6 @@ class AttributeTest extends BaseTest
 
     public function testAvoidAttributeCollision()
     {
-
         $dataCat = app(DataSchemaManager::class)->createOrFail([
             'name' => 'cat',
         ])->getResource();
@@ -67,7 +66,6 @@ class AttributeTest extends BaseTest
             'schema' => 'Text',
             'model'  => 'cat',
         ])->getResource();
-
 
         $dataDog = app(DataSchemaManager::class)->createOrFail([
             'name' => 'dog',
@@ -82,12 +80,12 @@ class AttributeTest extends BaseTest
         ])->getResource();
 
         $resourceCat = $managerCat->createOrFail([
-            'name' => 'name-1',
+            'name'  => 'name-1',
             'label' => 'label-1',
         ])->getResource();
 
         $resourceDog = $managerDog->createOrFail([
-            'name' => 'name-2',
+            'name'  => 'name-2',
             'label' => 'label-2',
         ])->getResource();
 

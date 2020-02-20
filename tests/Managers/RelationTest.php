@@ -71,14 +71,11 @@ class RelationTest extends BaseTest
             ]),
         ]);
 
-
         $dog->friends(); // correct
 
         $this->expectException(\BadMethodCallException::class);
         $cat->friends(); // incorrect
-
     }
-
 
     public function getQuery($builder)
     {

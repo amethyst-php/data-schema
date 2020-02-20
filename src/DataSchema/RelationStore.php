@@ -2,10 +2,10 @@
 
 namespace Amethyst\DataSchema;
 
-use Illuminate\Database\Eloquent\Model;
-use Imanghafoori\Relativity\RelationStore as RelationStoreBase;
 use Amethyst\DataSchema\Model as DataSchemaModel;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+use Imanghafoori\Relativity\RelationStore as RelationStoreBase;
 
 class RelationStore extends RelationStoreBase
 {
@@ -26,9 +26,9 @@ class RelationStore extends RelationStoreBase
     }
 
     /**
-     * Retrieve key
+     * Retrieve key.
      *
-     * @param Model $model
+     * @param Model  $model
      * @param string $key
      *
      * @return string
@@ -39,6 +39,6 @@ class RelationStore extends RelationStoreBase
             return parent::getKey($model, $key);
         }
 
-    	return $model->getMorphClass().".".$key;
+        return $model->getMorphClass().'.'.$key;
     }
 }

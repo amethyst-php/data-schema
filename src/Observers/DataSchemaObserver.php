@@ -64,12 +64,10 @@ class DataSchemaObserver
         Schema::drop(Helper::toTable($dataSchema->name));
 
         app('amethyst')->removeData($dataSchema->name);
-
-        $this->reload($dataSchema);
     }
 
     public function reload(DataSchema $dataSchema)
     {
-        event(new \Railken\EloquentMapper\Events\EloquentMapUpdate(''));
+        event(new \Railken\EloquentMapper\Events\EloquentMapUpdate($dataSchema->name));
     }
 }

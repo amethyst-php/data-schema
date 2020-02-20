@@ -53,16 +53,7 @@ class Model extends BaseModel implements EntityContract
      */
     public function newInstance($attributes = [], $exists = false)
     {
-        // This method just provides a convenient way for us to generate fresh model
-        // instances of this current model. It is particularly useful during the
-        // hydration of new objects via the Eloquent query builder instances.
-        $model = new static((array) $attributes);
-
-        $model->exists = $exists;
-
-        $model->setConnection(
-            $this->getConnectionName()
-        );
+        $model = parent::newInstance($attributes, $exists);
 
         $model->setTable($this->getTable());
         $model->setManager($this->retrieveManager());

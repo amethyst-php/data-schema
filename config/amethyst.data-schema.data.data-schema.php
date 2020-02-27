@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'table'      => 'amethyst_data_schemas',
+    'table'      => 'data_schema',
     'comment'    => 'DataSchema',
     'model'      => Amethyst\Models\DataSchema::class,
     'schema'     => Amethyst\Schemas\DataSchemaSchema::class,

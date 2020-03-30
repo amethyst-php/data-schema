@@ -10,6 +10,7 @@ use Railken\Lem\Manager as BaseManager;
 use Railken\Lem\Repository;
 use Railken\Lem\Serializer;
 use Railken\Lem\Validator;
+use Railken\Lem\Agents;
 
 class Manager extends BaseManager
 {
@@ -22,6 +23,10 @@ class Manager extends BaseManager
      */
     public function __construct(AgentContract $agent = null)
     {
+        if (!$agent) {
+            $agent = new Agents\SystemAgent();
+        }
+
         $this->setAgent($agent);
     }
 

@@ -3,6 +3,7 @@
 namespace Amethyst\DataSchema;
 
 use Amethyst\Models\DataSchema;
+use Railken\Lem\Agents;
 use Railken\Lem\Authorizer;
 use Railken\Lem\Contracts\AgentContract;
 use Railken\Lem\Faker;
@@ -10,7 +11,6 @@ use Railken\Lem\Manager as BaseManager;
 use Railken\Lem\Repository;
 use Railken\Lem\Serializer;
 use Railken\Lem\Validator;
-use Railken\Lem\Agents;
 
 class Manager extends BaseManager
 {

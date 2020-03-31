@@ -29,7 +29,7 @@ class DataSchemaSchema extends Schema
                         }
                     }
 
-                    return preg_match('/^([a-z0-9\-]*)$/', $value);
+                    return preg_match('/^[a-z][a-z0-9_]*$/', $value);
                 }),
             Attributes\LongTextAttribute::make('description'),
             Attributes\CreatedAtAttribute::make(),

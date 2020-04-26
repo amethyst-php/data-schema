@@ -28,7 +28,7 @@ class Manager extends BaseManager
         }
 
         $this->setAgent($agent);
-        
+
         if ($boot) {
             $this->boot();
         }

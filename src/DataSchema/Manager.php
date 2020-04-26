@@ -21,13 +21,17 @@ class Manager extends BaseManager
      *
      * @param AgentContract $agent
      */
-    public function __construct(AgentContract $agent = null)
+    public function __construct(AgentContract $agent = null, bool $boot = true))
     {
         if (!$agent) {
             $agent = new Agents\SystemAgent();
         }
 
         $this->setAgent($agent);
+        
+        if ($boot) {
+            $this->boot();
+        }
     }
 
     /**

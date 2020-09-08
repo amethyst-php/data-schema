@@ -6,7 +6,7 @@ use Doctrine\Common\Inflector\Inflector;
 
 class Helper
 {
-    const PREFIX = 'ac_';
+    const PREFIX = '';
 
     public static function toTable(string $name)
     {

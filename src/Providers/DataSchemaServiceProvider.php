@@ -15,7 +15,7 @@ class DataSchemaServiceProvider extends CommonServiceProvider
     {
         $this->app->register(\Amethyst\Providers\AttributeSchemaServiceProvider::class);
         $this->app->register(\Amethyst\Providers\RelationSchemaServiceProvider::class);
-        
+
         parent::register();
 
 

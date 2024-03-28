@@ -4,13 +4,12 @@
     "keywords": ["laravel", "amethyst", "data-schema"],
     "license": "MIT",
     "require": {
-        "php": ">=7.2",
-        "amethyst/core": "0.2.*",
-        "amethyst/attribute-schema": "0.2.*",
-        "amethyst/relation-schema": "0.2.*"
+        "php": ">=8.2",
+        "amethyst/core": "0.3.*",
+        "amethyst/attribute-schema": "0.3.*",
+        "amethyst/relation-schema": "0.3.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "*",
         "orchestra/testbench": "*"
     },
     "autoload": {

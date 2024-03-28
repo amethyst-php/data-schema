@@ -2,7 +2,7 @@
 
 namespace Amethyst\DataSchema;
 
-use Doctrine\Common\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 
 class Helper
 {
@@ -10,6 +10,6 @@ class Helper
 
     public static function toTable(string $name)
     {
-        return static::PREFIX.Inflector::tableize(str_replace('-', '_', $name));
+        return static::PREFIX.(InflectorFactory::create()->build())->tableize(str_replace('-', '_', $name));
     }
 }

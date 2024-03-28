@@ -12,6 +12,10 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         parent::setUp();
 
         $this->artisan('migrate:fresh');
+
+        app('amethyst.relation-schema')->boot();
+        app('amethyst.attribute-schema')->boot();
+        app('eloquent.mapper')->boot();
     }
 
     protected function getPackageProviders($app)

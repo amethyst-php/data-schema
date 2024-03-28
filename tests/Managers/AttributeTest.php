@@ -2,7 +2,7 @@
 
 namespace Amethyst\Tests\Managers;
 
-use Amethyst\Managers\AttributeManager;
+use Amethyst\Managers\AttributeSchemaManager;
 use Amethyst\Managers\DataSchemaManager;
 use Amethyst\Tests\BaseTest;
 
@@ -16,7 +16,7 @@ class AttributeTest extends BaseTest
 
         $manager = app('amethyst')->findManagerByName($data->name);
 
-        $attribute = app(AttributeManager::class)->createOrFail([
+        $attribute = app(AttributeSchemaManager::class)->createOrFail([
             'name'   => 'name',
             'schema' => 'Text',
             'model'  => 'cat',
@@ -28,7 +28,7 @@ class AttributeTest extends BaseTest
 
         $this->assertEquals('cat-1', $resource->name);
 
-        $attribute = app(AttributeManager::class)->createOrFail([
+        $attribute = app(AttributeSchemaManager::class)->createOrFail([
             'name'   => 'description',
             'schema' => 'Text',
             'model'  => 'cat',
@@ -61,7 +61,7 @@ class AttributeTest extends BaseTest
 
         $managerCat = app('amethyst')->findManagerByName($dataCat->name);
 
-        app(AttributeManager::class)->createOrFail([
+        app(AttributeSchemaManager::class)->createOrFail([
             'name'   => 'name',
             'schema' => 'Text',
             'model'  => 'cat',
@@ -73,7 +73,7 @@ class AttributeTest extends BaseTest
 
         $managerDog = app('amethyst')->findManagerByName($dataDog->name);
 
-        app(AttributeManager::class)->createOrFail([
+        app(AttributeSchemaManager::class)->createOrFail([
             'name'   => 'label',
             'schema' => 'Text',
             'model'  => 'dog',

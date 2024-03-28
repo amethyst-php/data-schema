@@ -13,10 +13,11 @@ class DataSchemaServiceProvider extends CommonServiceProvider
      */
     public function register()
     {
-        parent::register();
-
         $this->app->register(\Amethyst\Providers\AttributeSchemaServiceProvider::class);
         $this->app->register(\Amethyst\Providers\RelationSchemaServiceProvider::class);
+        
+        parent::register();
+
 
         $this->app->singleton('amethyst.data-schema', function ($app) {
             return new \Amethyst\Services\DataSchema();

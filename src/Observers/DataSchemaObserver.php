@@ -18,7 +18,7 @@ class DataSchemaObserver
     public function created(DataSchema $dataSchema)
     {
         Schema::create(Helper::toTable($dataSchema->name), function (Blueprint $table) use ($dataSchema) {
-            $table->increments('id');
+            $table->id();
             $table->timestamps();
         });
 

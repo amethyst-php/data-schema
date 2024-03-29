@@ -13,7 +13,7 @@ class CreateDataSchemasTable extends Migration
     public function up()
     {
         Schema::create(Config::get('amethyst.data-schema.data.data-schema.table'), function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->timestamps();

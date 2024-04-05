@@ -70,11 +70,24 @@ class Manager extends BaseManager
 
     public function newEntity(array $parameters = [])
     {
-        $model = new Model($parameters);
+        $aliasName = ucfirst($this->dataSchema->name);
+        $namespace = "App\Models\DataSchema";
+        $fullAliasName = "\\".$namespace."\\".$aliasName;
+
+        // Possibility to write your own model 
+        if (!class_exists($fullAliasName)) {
+            $this->newAlias($namespace, Model::class, $aliasName);
+        }
+
+        $model = new $fullAliasName($parameters);
         $model->setTable(Helper::toTable($this->dataSchema->name));
         $model->setManager($this);
         $model->ini(null, true);
 
         return $model;
+    }
+
+    public function newAlias($namespace, $original, $alias) {
+        eval("namespace $namespace;\n class $alias extends \\$original {}");
     }
 }

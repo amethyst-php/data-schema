@@ -74,7 +74,7 @@ class Manager extends BaseManager
         $namespace = "App\Models\DataSchema";
         $fullAliasName = "\\".$namespace."\\".$aliasName;
 
-        // Possibility to write your own model 
+        // Possibility to write your own model
         if (!class_exists($fullAliasName)) {
             $this->newAlias($namespace, Model::class, $aliasName);
         }
@@ -87,7 +87,8 @@ class Manager extends BaseManager
         return $model;
     }
 
-    public function newAlias($namespace, $original, $alias) {
+    public function newAlias($namespace, $original, $alias)
+    {
         eval("namespace $namespace;\n class $alias extends \\$original {}");
     }
 }

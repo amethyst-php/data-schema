@@ -70,7 +70,7 @@ class Manager extends BaseManager
 
     public function newEntity(array $parameters = [])
     {
-        $aliasName = ucfirst($this->dataSchema->name);
+        $aliasName = ucfirst(str_replace("-","_", $this->dataSchema->name));
         $namespace = "App\Models\DataSchema";
         $fullAliasName = "\\".$namespace."\\".$aliasName;
 
